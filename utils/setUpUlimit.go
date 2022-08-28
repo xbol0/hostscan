@@ -1,3 +1,4 @@
+//go:build linux || darwin
 // +build linux darwin
 
 package utils
@@ -28,4 +29,3 @@ func SetUlimitMax() {
 	}
 	elog.Info(fmt.Sprintf("Rlimit set success! %v", rLimit))
 }
-

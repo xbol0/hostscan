@@ -7,6 +7,7 @@ import (
 	"hostscan/vars"
 	"time"
 )
+
 var format logging.Formatter
 
 func init() {

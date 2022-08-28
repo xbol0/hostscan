@@ -2,11 +2,10 @@ package vars
 
 import "github.com/schollz/progressbar/v3"
 
-
 var (
 	Schemes = []string{"http", "https"}
-	Hosts = []string{}
-	Ips = []string{}
+	Hosts   = []string{}
+	Ips     = []string{}
 )
 
 var ProcessBar *progressbar.ProgressBar

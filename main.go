@@ -1,17 +1,16 @@
 package main
 
 import (
+	"flag"
+	"fmt"
 	"hostscan/core"
 	"hostscan/elog"
 	"hostscan/utils"
 	"hostscan/vars"
-	"flag"
-	"fmt"
 	"os"
 )
 
-
-func main(){
+func main() {
 	utils.Banner()
 
 	utils.SetUlimitMax()
@@ -24,9 +23,9 @@ func main(){
 
 	if len(*vars.Ip) > 0 {
 		vars.Ips = append(vars.Ips, *vars.Ip)
-	}else if len(*vars.IpFile) > 0 {
+	} else if len(*vars.IpFile) > 0 {
 		tmp_ips := utils.Readlines(*vars.IpFile)
-		for _, tmp_ip := range tmp_ips{
+		for _, tmp_ip := range tmp_ips {
 			vars.Ips = append(vars.Ips, tmp_ip)
 		}
 	}
@@ -38,9 +37,9 @@ func main(){
 
 	if len(*vars.Host) > 0 {
 		vars.Hosts = append(vars.Hosts, *vars.Host)
-	}else if len(*vars.HostFile) > 0 {
+	} else if len(*vars.HostFile) > 0 {
 		tmp_hosts := utils.Readlines(*vars.HostFile)
-		for _, tmp_host := range tmp_hosts{
+		for _, tmp_host := range tmp_hosts {
 			vars.Hosts = append(vars.Hosts, tmp_host)
 		}
 	}
@@ -49,8 +48,8 @@ func main(){
 		elog.Error("No Host Found! Please use -d/-D to input single host or hosts in file")
 		return
 	}
-	exist,_ := utils.PathExists(*vars.OutFile)
-	if exist{
+	exist, _ := utils.PathExists(*vars.OutFile)
+	if exist {
 		_ = os.Remove(*vars.OutFile)
 	}
 

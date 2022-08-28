@@ -4,13 +4,13 @@ import (
 	"fmt"
 	"hostscan/elog"
 	"io/ioutil"
-	"strings"
 	"os"
+	"strings"
 )
 
-func Readlines(filepath string) []string{
+func Readlines(filepath string) []string {
 	data, err := ioutil.ReadFile(filepath)
-	if err != nil{
+	if err != nil {
 		elog.Error(fmt.Sprintf("Read File: %s [%s]", filepath, err))
 		return nil
 	}
@@ -19,13 +19,13 @@ func Readlines(filepath string) []string{
 	return lines
 }
 
-func WriteLine(line string, outpath string){
+func WriteLine(line string, outpath string) {
 	f, err := os.OpenFile(outpath, os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0666)
 	if err != nil {
 		panic(err)
 	}
 	defer f.Close()
-	if _, err = f.WriteString(line+"\n"); err != nil {
+	if _, err = f.WriteString(line + "\n"); err != nil {
 		elog.Warn(fmt.Sprintf("Write uri[%s]: %s", line, err))
 	}
 }
